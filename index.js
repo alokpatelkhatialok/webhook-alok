@@ -21,6 +21,10 @@ app.post('/webhook/order-created', (req, res) => {
   res.status(200).send('Webhook received');
 });
 
+app.get('/', (req, res) => {
+    res.send('✅ Server is running');
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
