@@ -8,17 +8,23 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Shopify Webhook Route
+// app.post('/webhook/order-created', (req, res) => {
+//   const order = req.body;
+
+//   console.log('🔔 New Order Created:', {
+//     id: order.id,
+//     email: order.email,
+//     total_price: order.total_price,
+//     line_items: order.line_items.map(item => item.name)
+//   });
+
+//   res.status(200).send('Webhook received');
+// });
+
 app.post('/webhook/order-created', (req, res) => {
-  const order = req.body;
-
-  console.log('🔔 New Order Created:', {
-    id: order.id,
-    email: order.email,
-    total_price: order.total_price,
-    line_items: order.line_items.map(item => item.name)
-  });
-
-  res.status(200).send('Webhook received');
+    const order = req.body;
+    console.log('Order created:', order);
+    res.status(200).send('OK');
 });
 
 app.get('/', (req, res) => {
